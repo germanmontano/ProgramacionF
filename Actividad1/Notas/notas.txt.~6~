@@ -1,0 +1,35 @@
+Descripción de comandos:
+                     *Dentro de la terminal*
+ *ls -l (Permite ver los archivos)
+ *ls -al (Permite ver los archivos mas detalladamente)
+ *cp (permite copiar los archivos)
+ *mkdir (Permite crear carpetas)
+ *cd (Cambia de carpeta)
+ *emacs (permite acceder a un archivo de texto dentro del porgrama
+         emacs)
+ *clear (permite limpiar todos los comandos puestos en la terminal)
+ *man (abre un manual de la terminal)
+ *echo (repite la ultima linea de comando)
+ *cd .. (vuelves una carpeta atras)
+ *cat (muestra la carpeta en la que te encuentras)
+ *history (muestras las acciones realizadas en la terminal)
+ *cp -R (copia una carputa con los archivos de su interior)
+ *rm (borra los archivos)
+ *rm ejemplo* (borra todos los archivos que esten relacionados con lo
+               escrito)
+ *exit (sales de la terminal, quien lo diria)
+ *pwd (indica el directoria actual en el que te encuentras)
+ *fire (te dicen que tipo de documentos son)
+ *ls -alh (muestra el peso de las carpetas y si este supera los 3
+           digitos lo redondea)
+ *man -k (muestra todos los manuelas que empiezen por la letra que
+         escribas)
+ *rmdir (elimina la carpeta que elijas, junto con su interior)
+ 
+
+                        *Dentro de emacs*
+ *ctrl-x, 1 (se queda con la pantalla donde esté el cursor)
+ *ctrl-G (aborta comando)
+ *ctrl-x, ctrl-s (salva el archivo)
+ *ctrl-x, ctrl-c (sales del archivo)
+ 
