@@ -1,0 +1,157 @@
+\documentclass{article}
+
+% set font encoding for PDFLaTeX or XeLaTeX
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\fi
+
+% used in maketitle
+\title{Actividad 1}
+\author{Montaño Peraza German Antonio \\
+Departamento de Física \\
+Universidad de Sonora}
+\date{31 de agosto del 2017}
+
+% Enable SageTeX to run SageMath code right inside this LaTeX file.
+% documentation: http://mirrors.ctan.org/macros/latex/contrib/sagetex/sagetexpackage.pdf
+% \usepackage{sagetex}
+
+\begin{document}
+\maketitle
+% Son comentarios
+\section{Introducción}
+En este trabajo investigamos en los links que nos proporcionaba el curso para haberiguar cuales eran los comandos que se podian utilizar en Bash. Para posteriormente practicar y utilizarlos en futuros trabajos.
+
+\subsection{Cosas a destacar}
+Durante clase hemos analizado distintas paginas para poder utilizar el sistema latex tanto para trabajos escritos, matematicos, en general trabajos de investigación. De esta manera y bajo practica constante al rededor del semestre lograremos dominar la utilización de esta clase de programas.
+
+\subsubsection{Comandos de Bash}
+% Pegamos lo copiado que escribimos en Emacs
+\begin{verbatim}
+*Dentro de la terminal*
+ *ls -l (Permite ver los archivos)
+ *ls -al (Permite ver los archivos mas detalladamente)
+ *cp (permite copiar los archivos)
+ *mkdir (Permite crear carpetas)
+ *cd (Cambia de carpeta)
+ *emacs (permite acceder a un archivo de texto dentro del porgrama
+         emacs)
+ *clear (permite limpiar todos los comandos puestos en la terminal)
+ *man (abre un manual de la terminal)
+ *echo (repite la ultima linea de comando)
+ *cd .. (vuelves una carpeta atras)
+ *cat (muestra la carpeta en la que te encuentras)
+ *history (muestras las acciones realizadas en la terminal)
+ *cp -R (copia una carputa con los archivos de su interior)
+ *rm (borra los archivos)
+ *rm ejemplo* (borra todos los archivos que esten relacionados con lo
+               escrito)
+ *exit (sales de la terminal, quien lo diria)
+ *pwd (indica el directoria actual en el que te encuentras)
+ *fire (te dicen que tipo de documentos son)
+ *ls -alh (muestra el peso de las carpetas y si este supera los 3
+           digitos lo redondea)
+ *man -k (muestra todos los manuelas que empiezen por la letra que
+         escribas)
+ *rmdir (elimina la carpeta que elijas, junto con su interior)
+ *touch (cambia fecha y hora del archivo)
+ *mv-ejemplo-carpeta en la que estas-../otra carpeta (mueve los
+                                                      archivos)0
+ *rm (elimina archivos)
+ *vi (inserta un comando)
+ *cat (permite ver los archivos)
+ *menos (permite ver archivos mas grandes)
+ *R (Puedes ver el contenido del archivo)
+ *W (Puedes cambiar el contenido del archivo)
+ *X (Puede ejecutar el archivo o programa)
+ *Chmod[permisos][ruta] (permite dar permisos)
+ *Ls -Id (permite ver los permisos para un directorio)
+ *Head[numero][path] (imprime x numero de lienas)
+ *tail[numero][ruta] (imprime x numero de las ultimas lineas)
+ *sort[-opcion][ruta] (ordena)
+ *Nl[-opciones][ruta] (representa las lineas numericas)
+ *cut[-opciones][ruta] (si el contenido esta separado, solo selecciona
+                        ciertos campos)
+ *sed<expresión>[ruta] (permite buscar y remplazar datos)
+ *Uniq[opciones][ruta] (elimina rutas duplicadas)
+ *Tac (imprime los datos en orden inverso)
+ egrep [linea de comandos]<patrón>[ruta] (busca un determinado
+                                         conjunto de datos e imprime
+					 cada linea que contenga)
+ *> (guarda la salida de un archivo)
+ *>> (añade salida a un archivo)
+ *< (lee la entrada de un archivo)
+ *2> (redirige mensaje de error)
+ *l (envia la salida de un programa como entrada de otro)
+ *top (muestra todo lo que esta pasando en el sistema)
+ *ps (mostrara los procesos de la terminal)
+ *ps aux (muestra vista completa del sistema)
+ *kill[señal]<PID> (acaba automaticamente  con el programa que le
+                   señalemos)
+ *jobs (muestra todos los trabajos en un segundo plano)
+ *fg (mueve trabajos de segundo plano a un primer plano)
+ *Ctrl+z (detiene el programa de primer plano y lo pasa a un segundo
+          plano)
+ *#! (El asunto.Indica que interprete debe ejecutarse un script)
+ *which (le indica el camino a un programa en particular)
+ *$ (se coloca antes de un nombre de variable cuando nos referimos a
+    su valor)
+ *" (se usa para guardar la salida de un programa en una variante)
+ *date (muestra la fecha)
+ *if [] then else if (realiza una condición)
+ *du -sh ./* (mira el tamaño del directorio)
+ *df -h (muestra el espacio que ocupa y lo que queda libre)
+ 
+              *Al estar en un edirtor de comandos*
+ *ZZ (guardar y salir)
+ *Q (quita todos los cambios desde el ultimo guardado)
+ *: W (guarda pero no sale)
+ *: Wq (de nuevo, guardar y salir)
+ 
+                        *Dentro de emacs*
+ *ctrl-x, 1 (se queda con la pantalla donde esté el cursor)
+ *ctrl-G (aborta comando)
+ *ctrl-x, ctrl-s (salva el archivo)
+ *ctrl-x, ctrl-c (sales del archivo)
+ 
+                      *Nacegando en vi*
+ *Flechas (mueve el cursor)
+ *j,k,h,l (mueve el cursor similar a las flechas)
+ *$ (mueve el cursor al final de la linea)
+ *NG (se mueve a la n- linea)
+ *G (pasar a la ultima linea)
+ *W (se mueve al principio de la sig palabra)
+ *Nw (se mueve a la n palabra)
+ *B (se mueve al principio de la palabra anterior)
+ *Nb (mueve de nuevo n palabra)
+ *{ (retrocede un párrafo)
+ *} (avanza un párrafo)
+ *X (elimina un solo caracter)
+ *Nx (elimina n caracteres)
+ *Dd (borra la linea actual)
+ *Dn (borra hasta donde el comando de mov lo lleve)
+ *U (desace la última acción)
+ *U(Nota:capital) (desace todos los cambios de la linea actual)
+
+               *Conjunto básico de comodines*
+ ** (representa 0 o mas caracteres)
+ *? (representa un solo carácter)
+ *[] (representa un rango de caracteres)
+\end{verbatim}
+
+\section{Descripción del trabajo}
+Aquí el texto de la segunda sección...
+\begin{equation}
+F=ma=m\frac{dv}{dt}
+\end{equation}
+\begin{equation}
+W=\int_{a}^{b}F ds
+\end{equation}
+\section{Conclusion}
+Una vez analizado todos los comandos y conseguido distintas paginas para verificar la utilización de otros cuantos, se consiguio dar un paso en la utilización de Bash y el manejo de Latex para entregar trabajos de forma practica.
+\end{document}
