@@ -1,0 +1,72 @@
+\documentclass{article}
+
+% set font encoding for PDFLaTeX or XeLaTeX
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\fi
+\date{septiembre 11 del 2017}
+% used in maketitle
+\title{Movimiento de proyectiles}
+\author{Montaño Peraza German Antonio}
+
+% Enable SageTeX to run SageMath code right inside this LaTeX file.
+% documentation: http://mirrors.ctan.org/macros/latex/contrib/sagetex/sagetexpackage.pdf
+% \usepackage{sagetex}
+
+\begin{document}
+\maketitle
+\section{Introducción}
+En este trabajo veremos como al utilizar Fortran, podremos realizar programas para calcular distintos valores de la distancia, la altura maxima y su tiempo de vuelo.
+\subsection{Tiempo de vuelo}
+Para empezar definimos las constantes de la gravedad y de \(\pi\)\\
+\[g=9.8\]
+\[\pi=3.1415927\]
+Definimos las variables de a, u y t para definir los grados, la velocidad y el tiempo que queremos.\\
+Le decimos que nos convierta el ángulo a radianes con la formula de\\                                     \[a=a\pi/180.0\]
+cabe recalcar que esta es la formula que se usara para que nos convierta los grados a radianes sin embargo dentro de fortran escribiremos esta misma función pero dentro del lenguaje de fortran, y por ultimo introducimos la ecuación del tiempo en vuelo para que al darle cualquier valor x este nos de una respuesta de en función de los valores dichos\\
+\[t=(2.0u)sin(a)/g\]
+\\Ejemplo\\
+Un jugador de lanzamiento de peso de 1.95 metros de altura consigue lanzar un cuerpo con una velocidad de 25 metros/segundo. Sabiendo que la trayectoria se inicia con una elevación de 40º, calcula el tiempo que estubó en vuelo la pesa que lanzo el jugador.
+\[t=(2(25)sin(40)/g=\]
+Al meter los valores en nuestro programa este nos dara como respuesta 13.1752529 demostrando que el programa efectivamente funciona.
+
+\subsection{Altura máxima}
+A continuación se analizaran los pasos realizados para lograr crear un programa que sea capaz de analizar los datos que le otorguemos para calcular por nosotros una altura máxima deseada.\\
+Se definirán las constantes de la gravedad y de \(\pi\)\\
+\[g=9.8\]
+\[\pi=3.1415927\]
+Definimos las variables de a, u y h para referirnos al ángulo, la velocidad inicial y a la altura.\\
+Le indicamos que nos pregunte por un ángulo y una velocidad inicial con el comando write, después utilizaremos el comando read para que le otorguemos los 2 valores que este programa necesitara.\\
+Seguido indicaremos a fortran que nos convierta los grados a radianes utilizando la formula de:
+\[a=a\pi/180.0\]
+Ahora si le indicaremos la formula que utilizara nuestro programa para calcular la altura máxima todo en base a los datos que hemos decidido utilizar para calcularla. Sin olvidar que esta formula se escribirá como es para esta explicación pero al introducirlo en fortran se hará de otra manera.
+\[h=u^{2}sin^{2}(a)/2g\]
+Y para terminar le ponemos el comando write para indicarle que nos de el resultado de nuestra formula aplicando los datos que le hemos dicho con anterioridad.\\
+Ejemplo\\
+Un beibolista recolecta datos de su desempeño en juegos pasados. En cierto partido descubre que al golpear una pelota que salio del campo esta toma una velocidad inicial de 150 m/s, ademas de que se da cuenta que la bola toma una inclinación de 35 grados. Con saber estos datos el beibolista se pregunta, ¿Que tan alto llego la bola?
+\[h=150^{2}sin^{2}(35)/2g=377.66m\]
+Al introducir los datos, como se logra observar, el programa nos indica que segun los datos que escogimos la altura máxima que tomara la bola del ejemplo sera de 377.66m.
+\subsection{Distancia máxima}
+Para concluir con los programas que nosotros creamos en clase se encuentra la distancia máxima, al igual que en los otros incisos se analizaran los pasos realizados para que nos de un resultado según los datos que nosotros designemos.\\
+Comenzaremos definiendo las variables de g y \(\pi\) para utilizarlos más adelante
+\[g=9.8\]
+\[\pi=3.1415927\]
+Después indicaremos unas variables como "a" para el ángulo, "u" para la rapidez inicial y "d" para la distancia recorrida.\\
+Le indicamos a fortran que conviertas los angulos a radianes
+\[a=(a\pi)/180\]
+A continuación le indicaremos la formula que utilizara nuestro programa para calcular la distancia máxima indicando en donde iran nuestras variantes y claro escribiendolo en una forma que fortran sea capaz de leerlo, aun que para esta explicación se analizara en la formula ordinaria.
+\[d=(u^{2}/g)(sin(2a))\]
+Y por ultimo utilizando el comando write le indicamos que nos de el resultado de nuestra formula.\\
+Ejemplo:\\
+Durante el campeonato de furboll, Juanito intenta anotar el goll ganador para ser el heroe de su equipo, como esta a punto de acabarse el partido él patea el balón con todas sus fuerzas para intentar anotar. Al golpear el balón este sale con una velocidad de 25 m/s con una inclinación de 20 grados, si la distancia entre el y la porteria es de 30 m, ¿lograra llegar el disparo de Juanito?
+\[d=(25^{2}/g)sin40=40.99m\]
+Al aplicar nuestro porgrama esto nos dio que según los datos que tenemos el disparo de Juanito recorreria una distancia de casi 41m y por lo tanto si llegaria hasta la porteria.
+\subsection{Conclusion}
+Con esta practica hemos logrado empezar a trabajar en la creación de distintos programas para calcular datos, facilitando el hecho de sacar calculos y dominando un poco más la herramienta de trabajo Fortran.
+
+\end{document}
