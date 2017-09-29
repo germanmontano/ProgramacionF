@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage{graphicx}
+% set font encoding for PDFLaTeX or XeLaTeX
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\fi
+\date{28 de septiembre del 2017}
+% used in maketitle
+\title{Estudio del movimiento de proyectiles}
+\author{Montaño Peraza German Antonio}
+
+% Enable SageTeX to run SageMath code right inside this LaTeX file.
+% documentation: http://mirrors.ctan.org/macros/latex/contrib/sagetex/sagetexpackage.pdf
+% \usepackage{sagetex}
+
+\begin{document}
+\maketitle
+\section{Introducción}
+Durante este trabajo se explicara como es que nuestro programa nos da los valores de las coordenadas de una gráfica según pasa un intervalo de tiempo, basandonos en el programa anteriormente realizado, lo modificaremos para lograr calcular dichos datos.
+\section{Explicación de los vectores}
+Para comenzar esta actividad analizamos como es que actúa un programa para dar los valores de los vectores x, y de una gráfica. Dicho programa no funcionaba en su totalidad, sin embargo es de utilidad para saber como actúa un loop que es la función nueva con la trabajaremos y nos apoyaremos para poder calcular todos los valores que nuestra gráfica tome en un intervalo, un ejemplo de esto seria calcular todos los valores de su posición que tome en un intervalo de (1-200). De esta forma nuestro programa dara todos los valores sin la necesidad de que el usuario tenga que sacar uno por uno los datos.
+\section{Programa del desplazamiento}
+A continuación se explicara de que manera se elabora nuestro programa para ser capaz de calcular el desplazamiento en la posición X y Y de un objeto que es lanzado a distintos grados. \\
+Primero tomamos como variables a 'i' y 'a' para que tomen distintos valores en nuestro programa.\\
+Definiremos 2 parámetros como numero de tiempos(ntimes) y el máximo ángulo(maxang)
+\[ntimes=100\]
+\[maxang=90\]
+Ahora volveremos a dar unos valores variables que se utilizaran dentro de nuestro parametro.
+\[x,y,radian,time,fa,fi\]
+Y ahora definiremos unos cuantos valores constantes para reforzar los comandos que le indiquemos al programa.
+\[deltat=0.5\]
+\[g=5\]
+\[\pi=3.1415927\]
+\[vo=10\]
+Una vez definidas nuestros valores fijos y variables le daremos la orden al programa de que guarde los datos en un archivo de texto para posteriormente utilizarlos en la creación de una gráfica con ellos mismos.\\
+Le daremos las siguientes ordenes:\\
+open(1, file = 'grafica-dat', status= 'unknown')\\
+Ahora analizaremos paso por paso lo que este comando realizara. Para empezar open le indicara al programa que abra un archivo tal y como su nombre indica. Seguido file significara el nombre que este archivo nuevo tendra, no forzosamente tiene que ser el utilizado en este programa. Y por ultimo status, este nos indicare si es un archivo nuevo por crear, uno en el que se podra volver a salvar los valores, o si son los ultimos valores los que se tomaran. En nuestro caso el status es unknown  lo que permitira el almacenar más valores en caso de ser necesario.\\
+Ahora utilizaremos un loop para que nos calcule dentro de distintos ángulos
+ \[do  a=15, 90, 15\]
+\[fa=float(a)\]
+\[radian=(fa*\pi)/180\]
+Y ahora aplicaremos un segundo loop para que calcule ciertos tiempos dentro de los distintos ángulos, lo que permitira hacer todas la proyecciones que nos piden a la vez.
+\[do i=1, ntimes\]
+\[fi=float(i)\]
+\[time=fi*deltat\]
+Dentro de este segundo loop escribiremos nuestra formulas de desplazamiento en X e Y según nuestras variables, cabe recalcar que en este escrito se pondrá la formula como tal como son para calcular dichos valores pero en fortran se escribiran de tal manera que este sea capaz de comprender lo que le indicamos.
+\[x(i)=votcos(radian)\]
+\[y(i)=votsin(radina)-(1/2)gt^2\]
+Ahora indicaremos la salida de nuestro programa de loop con el comando end do y a la vez le pediremos que nos escriba los valores al haber realizado esto mismo. Cabe aclarar que esta acción la tendremos que realizar 2 veces debido a que realizamos 2 loop juntos.\\
+Y con esto tendremos completado nuestro programa y todos los valores obtenidos con este seran guardados en nuestro archivo de texto grafica.dat.
+\section{Gráfica del programa}
+
+
+\begin{figure}
+  \includegraphics[scale=0.25]{Puntos.png}
+  \caption{Trayectorias de proyectiles a distintos angulos}
+  \label{fig:Figura1}
+\end{figure}
+En la gráfica ~\ref{fig:Figura1} se logra apreciar como entre los cambios del angulos de 15 en 15 empezando por los 15 grados esta varia su curva.
+\end{document}

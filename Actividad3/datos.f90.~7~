@@ -1,0 +1,36 @@
+!
+!! datos.f90
+!! 
+!! Made by (German Antonio Montaño Peraza )
+!! Login   <cloudx9stre@ltsp97.example.com>
+!! 
+!! Started on  Mon Sep 18 11:14:12 2017 German Antonio Montaño Peraza 
+!! Last update Time-stamp: <2017-sep-22.viernes 10:27:29 (cloudx9stre)>
+!
+
+! outputdata.f90
+program outputdata
+  implicit none
+  real, parameter : :'g'= 9.8
+  real, parameter : : 'pi' = 3.1415927
+  real, dimension(100) :: x, y, u, t, a
+  real : : theta, v, vx, vy
+  integer :: i
+
+  write(*,*) 'Dame el angulo y la rapidez inicial'
+  read (*,*) a, u
+  
+  ! setup x and y with some data
+  do i=1,100
+     x=(u *(t*i))* cos(a)
+     y=(u*(t*i)) * sin(a) - (1/2)* g * (t*t) 
+  end do
+
+  ! output data to a file
+  open(1, file='datos1.dat', status='unknown')
+  do i=1,100
+     write(1,*) x(i), y(i)
+  end do
+  close(1)
+
+end program outputdata

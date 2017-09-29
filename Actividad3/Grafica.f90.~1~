@@ -1,0 +1,26 @@
+!
+!! Grafica.f90
+!! 
+!! Made by (German Antonio Montaño Peraza )
+!! Login   <cloudx9stre@ltsp88.example.com>
+!! 
+!! Started on  Mon Sep 25 11:15:12 2017 German Antonio Montaño Peraza 
+!! Last update Time-stamp: <2017-sep-25.lunes 11:23:33 (cloudx9stre)>
+!
+
+  ! outputdata.f90
+program outputdata
+  implicit none
+  !Defeniremos nuestras variables
+  integer :: i, a
+  !Daremos unos parametros
+  integer, parameter :: ntimes=100
+  integer, parameter :: maxang=90
+  !Dar valores variables dentro de un parametro
+  real, dimension (200) :: xy
+  real :: radian, time, fa, fi
+  !Definimos unos valores constantes
+  real, parameter :: deltat=0.1, g=5 !solo necesitamos la 1/2 g para
+  !los calculos
+  real, parameter :: pi=3.1415927, vo=10
+  
