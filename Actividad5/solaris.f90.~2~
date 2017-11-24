@@ -1,0 +1,39 @@
+!
+!! solaris.f90
+!! 
+!! Made by (German Antonio Montaño Peraza )
+!! Login   <cloudx9stre@ltsp166.example.com>
+!! 
+!! Started on  Fri Nov 10 10:44:57 2017 German Antonio Montaño Peraza 
+!! Last update Time-stamp: <2017-nov-10.viernes 12:26:40 (cloudx9stre)>
+!
+
+
+  !Definir variables y fijos
+  double precision :: T=365.26d0
+  double precision :: pi=3.14d0
+  double precision :: w, Fst, arad, i ,fi, Vang, deltat,a,x,y
+  double precision :: R=149.6d0
+  double precision :: G=6.674d-11
+  !mt=masa de la tierra, ms=masa del sol
+  double precision :: mt=5.972d24 , ms=1.989d30
+
+  !Formulas que se usara
+  !Fst=fuerza de atraccion entre el sol y la tierra
+  Fst= G*((ms*mt)/(R*R))
+  !arad=aceleracion radial de la tierra
+  arad= G*(ms/(R*R))
+  !w=velocidad angular de la tierra
+  w=(2*pi)/T
+  !Vang=velocidad angular
+  Vang=Rw
+  !Nuestra delta t
+  deltat=T/360
+  
+  do i= 15, 360, 15
+     fi=dfloat(i)
+     a=(fi*pi)/3.6d2
+     x=Rdcos(a)
+     y=Rdsin(a)
+     write(1,*) x(
+     

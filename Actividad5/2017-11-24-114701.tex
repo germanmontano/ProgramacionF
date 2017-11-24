@@ -1,0 +1,104 @@
+\documentclass{article}
+\usepackage{graphicx}
+% set font encoding for PDFLaTeX or XeLaTeX
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\fi
+\date{24 de noviembre del 2017}
+% used in maketitle
+\title{Movimiento de la tierra alrededor del sol}
+\author{Montaño Peraza German Antonio}
+
+% Enable SageTeX to run SageMath code right inside this LaTeX file.
+% documentation: http://mirrors.ctan.org/macros/latex/contrib/sagetex/sagetexpackage.pdf
+% \usepackage{sagetex}
+
+\begin{document}
+\maketitle
+\section{Introducción}
+En este trabajo crearemos un programa el cual nos dará la posición de la tierra alrededor del sol al cabo de 1 año. Para lograr esto trabajaremos con double precision para dar valores más exactos debido a que utilizaremos datos con una gran cantidad de números, con esto no perderemos presición y podremos mostrar una gráfica más exacta.
+\section{El programa}
+La función que realizara mi programa es variar el ángulo de la tierra al cabo de un año, al compararlo con ciertas formulas de las cuales se hablara más adelante. Con esto tendremos su posición en "x" y "Y" dandonos la capacidad de graficarla con precisión.
+\section{Creación}
+Para empezar definiremos todos los valores que seran double precision, estos pueden llegar a ser variables o valores fijos, pero es necesario tener cuidado ya que hay que asegurarnos que todos los valores que demos sean de este tipo para que fortran sea capas de comprenderlos.\\
+A continuación se presentaran las formulas introducidas en este programa.Todas las formulas y valores fijos serán double precision:
+\[T=365.26d0\]
+\[pi=3.14d0\]
+\[R=149.6d0\]
+\[G=6.674d-11\]
+\[mt=5.972d24\]
+\[ms=1.989d30\]
+Valores variables también en double precision
+\[w,Fst,arad,fi,Vang,deltat,x,x,a\]
+Y aqui daremos la siguiente variable que es necesaria para el programa el cual lo pondremos como un integer, esto puede paracer que hara que el programa falle ya que estamos trabajando en double precision pero más adelante se explicara como arreglar este detalle:
+\[i\]
+\subsection{Formulas dentro de nuestro programa}
+Las siguientes formulas van a ser escritas de la forma en que se introducirá a fortran para que se vea más claro lo que buscamos conseguir.\\
+Empezaremos con la formula para calcular la fuerza de atracción entre el sol y la tierra(Fst)
+\[G*((ms*mt)/(R*R))\]
+Ahora la formula de la aceleración radial de la tierra(arad)
+\[arad=G*(ms/(R*R))\]
+La formula de la velocidad angular de la tierra(w)
+\[w=(2.0d0*pi)/T\]
+Aqui observamos que el numero 2 lo anotamos como 2.0d0 para fortran sea capaz de leer como si fuese un valor más de double precision, esto es necesario para los valores enteros que metamos al programa.\\
+Formula de la velocidad angular(Vang)
+\[(R*w)\]
+Formula de deltat
+\[deltat=T/360.0d0\]
+Ahora le indicaremos el siguiente comando para hacer que el programa cree un nuevo archivo con todos los datos que obtendremos bajo el nombre de Sol.dat.
+\[open(1,file='Sol.dat', status='unknown')
+\subsection{Elaboracion del loop}
+Esta parte la destacaremos porque es donde explicare claramente el tema de la i que se menciono con anterioridad. \\
+Primero abriremos el loop y lo aplicaremos de 0 a 720 subiendo de 15 en 15. La razon de que el angulo varie hasta 720 es que necesitamos que la tierra de una vuelta completa alrededor del sol y con 360 apenas daria media vuelta.
+\[do i=0,720,15\]
+Aqui utilizaremos el comando DBLE al introducir la i para que esta se calcule como un valor de double precision y asi evitaremos esos errores al intentar hacer funciones entre numero double precision y los que no son.
+\[a=(DBLE(i)*pi/3.6d2)\]
+Y por ultimo daremos las formulas para la posicion en "X" y "Y"
+\[x=R*dcos(a)\]
+\[y=R*dsin(a)\]
+y para terminar cerramos el loop con un doble write para lograr guardar todos los datos.\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\section{Grafica obtenida}
+\begin{figure}
+\includegraphics[scale=0.5]{solYtierra.png}
+\caption{Trayectoria de la tierra alrededor del sol}
+\label{fig:Figura1}
+\end{figure}
+
+\end{document}
