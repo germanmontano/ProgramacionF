@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{graphicx}
+% set font encoding for PDFLaTeX or XeLaTeX
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\fi
+\date{30 de Noviembre del 2017}
+% used in maketitle
+\title{Movimiento Sol-Tierra-Luna}
+\author{Montaño Peraza German Antonio}
+
+% Enable SageTeX to run SageMath code right inside this LaTeX file.
+% documentation: http://mirrors.ctan.org/macros/latex/contrib/sagetex/sagetexpackage.pdf
+% \usepackage{sagetex}
+
+\begin{document}
+\maketitle
+\section{Introducción}
+En esta ocasión mostraremos un programa con el cual obtendremos la posición de la tierra con respecto al solo pero con la diferencia de que incluiremos a la luna girando alrededor de la tierra al paso de un año.
+\section{Practica del programa}
+Durante la creación del programa practicaremos aun más el uso del double precision para conseguir valores más exactos de cantidades sumamente grandes, además que durante la elaboración del mismo comprenderemos el uso de function y subroutine para obtener valores adicionales necesarios para el funcionamiento de esté.
+\section{Proceso}\
+Para empezar se utilizaran 2 function para establecer la posición en "x" y "y" del sol, junto con definir en double precision valores fijos y variables para darles un significado.\\
+Formulas en "x" y "y"
+\[x=rsolar*dcos(angsol)\]
+\[y=rsolar*dsin(angsol)\]
+A continuación daremos una subroutine para determinar la posición de la luna
+\[rlunar=rsolar/4.0d0\]
+\[posx=(rsolar*dcos(angsol))+(rlunar*dcos(anglun))\]
+\[posy=(rsoalr*dsin(angsol))+(rlunar*dsin(anglun))\]
+A partir de aquí inciara el programa como tal para hacer que varién los ángulos de los cuerpos que estamos posicionando.\\
+Una vez que ya hemos definido todos las variables en double precision e integer respectivamente aplicaremos los siguientes comandos para que nos guarden los datos en 2 columnas de datos para poder distinguir el movimiento de cada cuerpo celeste.
+\[open(1,file='Lunatierra.dat',status='unknown')\]
+\[open(2,file='Tierrasol.dat',status='unknown')\]
+y ahora aplicaremos un loop para poder variar los angulos de la tierra y luna, a la vez que con esto cambiara la posición de los mismos.
+\[do i=1,360,1\]
+en este parte se recuerda que el comando DBLE es para cambiar la i que esta como integer a un double precision.
+\[g=DBLE(i)\]
+Estas 2 formulas son para dar su posición en radianes
+\[angsol=g*velocidadsol\]
+\[anglun=g*velocidadlun\]
+y a continuación daremos sus pocisiones en "x" y "y" para la tierra con respecto al sol 
+\[x(i)=solx(angsol)\]
+\[y(i)=soly(angsol)\]
+Y a continuación las de la luna
+\[call moon(rsolar,rlunar,posx,anglun,angsol)\]
+\[totalx(i)=posx\]
+\[totaly(i)=posy\]
+Pero para que nos den los valores que necesitamos indicaremos que nos escriba los valores de la siguiente manera
+\[write(1,*) totalx(i),totaly(i)\]
+\[write(1,*)''\]
+\[write(2,*) x(i),y(i)\]
+\[write(2,*)''\]
+Finalmente podremos finalizar nuestro loop y asi terminar nuestro programa
+\section{Graficas optenidas}\
+\begin{figure}
+\includegraphics[scale=0.25]{Tierra-Sol.png}
+\caption{Posición de la tierra con respecto al sol}
+\label{fig:Figura1}
+\end{figure}
+\begin{figure}
+\includegraphics[scale=0.25]{Luna-Tierra.png}
+\caption{Posición de la luna con respecto a la tierra}
+\label{fig:Figura2}
+\end{figure}
+
+\end{document}
